@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<script>
+    function test() {
+        for (var i = 0; i < 500000; i++) {
+            var div = document.createElement('div');
+            div.setAttribute('id', 'testDiv');
+            document.body.appendChild(div);
+            document.body.removeChild(div);
+        }
+    }
+    setInterval(test, 10);
+    var num = 0;
+    var i = setInterval(function() {
+        num++;
+        var date = new Date();
+        document.write(date.getMinutes() + ':' + date.getSeconds() + ':' + date.getMilliseconds() + '<br>');
+        if (num > 10)
+            clearInterval(i);
+    }, 1000);
+</script>
+<body>
+
+</body>
+</html>

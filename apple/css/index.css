@@ -1,38 +1,167 @@
 .header1{
     width:100%;height:40px;
     background:#444;
-}
-.header2{
-    width:100%;height:44px;
-    background:#333;
-}
-.nav{
-    width:100%;height:100%;
-    margin:auto;
-    /*background: red;*/
-}
-.nav:after,.nav:before{
-    content: "";
     display: block;
 }
-.nav:after{
-    clear:both;
+.nav{
+    width:100%;height:44px;
+    background: rgba(0,0,0,1);
+    margin:0 auto;
 }
-.nav-left,.nav-right,.nav-center{
+.nav .large{
+    max-width:1024px;height:44px;
+    margin:0 auto;
+    text-align-last: justify;
+    -moz-text-align-last: justify;
+    display: none;
+}
+.nav .small div:first-child{
+    width:90%;height:44px;float:left;
+    position:relative;
+}
+.nav .small div:last-child{
+    width:10%;height:44px;float:left;
+}
+
+.menus .son{
+    position:absolute;
+    left:0;top:44px;
+    width:100%;height:100%;
+    background: #000000;
+    display: none;
+    overflow: hidden;
+    padding:5px 20px;
+    z-index: 20;
+}
+.menus .son>a{
+    display: block;
+    border-bottom: 1px solid #333;
+    text-align: left;
+}
+.nav .menus>a:first-child{
+    display: block;
+    text-align: left;
+    width:10%;height:44px;
     float:left;
 }
-.nav-center>li{
-    float:left;
+.nav .menus>a:last-child{
+    display: block;
+    width:90%;
+    height:44px;
+    text-align: center;
+}
+.menus .son>a:last-child{
+    border-bottom: 1px solid #ccc;
+}
+.nav .small{
+    display: block;
+}
+.shop{
+    display: block;
+}
+.nav .large a,.nav .small a{
+    line-height: 44px;
+    padding:0 10px;
+    color:#fff;
+}
+@media screen and (min-width:750px){
+    .nav .large{
+        display: block;
+    }
+    .nav .small{
+        display:none;
+    }
 }
 .banner{
-    width:100%;height:518px;
-    background: green;
+    width:100%;height:600px;
+    /*background: green;*/
+    position: relative;
+    overflow: hidden;
+}
+.banner .img{
+    width:100%;height:100%;
+    position: relative;
+}
+.banner .img .one{
+    display: block;
+    width:100%;height:100%;
+    z-index: 1;
+    background: #fff url(../image/pro_large.jpg) no-repeat;
+    background-size:contain;
+    background-position: center bottom;
+    position:absolute;top:0;left:0;
+}
+.banner .img .two{
+    display: block;
+    width:100%;height:100%;
+    background: #000 url(../image/iphone_large.jpg) no-repeat;
+    background-size:contain;
+    background-position: center bottom;
+    position:absolute;
+    top:0;left:100%;
+}
+.banner .img .three{
+    display: block;
+    width:100%;height:100%;
+    background: #000 url(../image/kk_large.jpg) no-repeat;
+    background-size:cover;
+    background-position: center center;
+    position:absolute;
+    top:0;left:100%;
+}
+.banner .left,.banner .right{
+    width:20%;height:100%;
+    position:absolute;
+    z-index: 10;
+    top:0;
+    cursor:pointer;
+}
+.banner .left{left:0}
+.banner .right{right:0}
+.banner .left .left-btn,.banner .right .right-btn{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:rgba(200,200,200,.5);
+    position:absolute;
+    top:0;bottom:0;left:0;right:0;
+    margin:auto;
+    color:#fff;
+    font-size:30px;
+    text-align: center;line-height: 64px;
+    display: none;
+}
+.banner .btns{
+    width:170px;height:2px;
+    position:absolute;
+    left:0;right:0;
+    margin:0 auto;
+    bottom:20px;
+    z-index: 20;
+}
+.banner .btns>div{
+    width:50px;height:4px;
+    float:left;
+    margin-right:10px;
+    position: relative;
+    background:rgba(200,200,200,0.3);
+}
+.banner .btns .progress{
+    width:0%;
+    height:4px;
+    position:absolute;
+    top:0;left:0;
+    background: #1d3e81;
+    z-index:20;
+}
+.banner .btns div:last-child{
+    margin:0;
 }
 .footer{
     height:500px;
     color:#666;
     line-height: 20px;
     font-size:12px;
+    padding:0 15%;
 }
 .footer>.top{
     font-size: 12px;
@@ -48,13 +177,87 @@
 .list:after{
     clear:both;
 }
+.image1,.image2,.image3,.image4{
+    height:200px;
+    border:2px solid #fff;
+    border-right:0;
+    background-size: cover;
+    background-position: center center;
+}
+.image1{
+    background-image: url(../image/gifts_small.jpg);
+}
+.image2{
+    background-image: url(../image/ipad_pro_small.jpg);
+}
+.image3{
+    background-image: url(../image/airpods_small.jpg);
+}
+.image4{
+    border:2px solid #fff;
+    background-image: url(../image/iphone_upgrade_small.jpg);
+}
+@media screen and (min-width:735px){
+    .image1{
+        background-image: url(../image/gifts_medium.jpg);
+    }
+    .image2{
+        background-image: url(../image/ipad_pro_medium.jpg);
+    }
+    .image3{
+        background-image: url(../image/airpods_medium.jpg);
+    }
+    .image4{
+        background-image: url(../image/iphone_upgrade_medium.jpg);
+    }
+}
+@media screen and (min-width:1067px){
+    .image1{
+        background-image: url(../image/gifts_large.jpg);
+    }
+    .image2{
+        background-image: url(../image/ipad_pro_large.jpg);
+    }
+    .image3{
+        background-image: url(../image/airpods_large.jpg);
+    }
+    .image4{
+        border:2px solid #fff;
+        background-image: url(../image/iphone_upgrade_large.jpg);
+    }
+}
 .footer>.list .rows{
     float:left;
     width:20%;
 }
-.footer>.list .rows ul li>a{
+.footer .list{
+    display: none;
+}
+.footer>.list2 .rows{
+    width:100%;
+}
+.footer >.list2 .rows ul{
+    display: none;
+}
+.footer >.list2 p{
+    cursor:pointer;
+    border-bottom:1px solid #ccc;
+    padding:5px 0;
+}
+.footer >.list2 p span{
+    float:right;
+}
+.footer .rows ul li>a{
     color:#666;
-    line-height: 20px;
+    line-height: 30px;
+}
+@media screen and (min-width:800px){
+    .footer .list{
+        display: block;
+    }
+    .footer .list2{
+        display: none;
+    }
 }
 .footer>.list .rows ul strong{
     color:#333;
