@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/one.css">
+</head>
+<style>
+    html,body{
+        width:100%;height:100%;
+        overflow: hidden;
+    }
+    *{
+        box-sizing: border-box;
+    }
+    .boxs{
+        width:800px;height:400px;
+        position:fixed;
+        top:0;bottom:0;left:0;right:0;
+        margin:auto;
+        perspective:1500px;
+        perspective-origin:bottom;
+    }
+    .left{
+        width:60px;height:60px;position:absolute;
+        top:0;bottom:0;margin:auto 0; left:-100px;
+        border-radius: 100%;
+        text-align: center;line-height: 60px;
+        background: rgba(0,0,0,0.5);
+        z-index: 10;
+        font-size: 20px;
+        cursor:pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .right{
+        width:60px;height:60px;position:absolute;
+        top:0;bottom:0;margin:auto 0; right:-100px;
+        border-radius: 100%;
+        text-align: center;line-height: 60px;
+        background: rgba(0,0,0,0.5);
+        z-index: 10;
+        font-size: 20px;
+        cursor:pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+</style>
+<script>
+    //panel面
+    window.onload = function(){
+        var num = 10;
+        var boxs = document.querySelector(".boxs");
+        var height = parseInt(getComputedStyle(boxs,null).height);//400px
+        var width = parseInt(getComputedStyle(boxs,null).width);//800px
+        var h = height/num;
+        var arr = [];
+        var a=0;
+        for(var i=0;i<num;i++){
+            //创建场景
+            if(a>num/2){
+                a--;
+            }else{
+                a++;
+            }
+            var scene = document.createElement("div");
+            scene.style.cssText="width:100%;height:"+h+"px;position:absolute;left:0;top:"+i*h+"px";
+            scene.className="scene";
+            //创建盒子
+            var box = document.createElement("box");
+            box.style.cssText = "width:100%;height:100%;position:absolute;top:0;left:0;transform-origin:center center "+(-width/2)+"px;transform-style:preserve-3d;animation-name:one;animation-duration: 2s;animation-delay:"+a*0.1+"s;animation-fill-mode:forwards;";
+            box.className = "box";
+            //创建面
+            for(var j=1;j<=6;j++){
+                var panel = document.createElement("div");
+                if(j==1){       //top
+
+                    panel.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;top:0;left:0;transform-origin:top;transform:rotateX(-90deg)";
+                    panel.className="panel1"
+                }else if(j==2){     //left
+
+                    panel.style.cssText="width:"+width+"px;height:"+h+"px;position:absolute;top:0;left:0;transform-origin:left;transform:rotateY(90deg)";
+                    panel.className="panel2";
+                    panel.style.background="url(img/img1.jpg) no-repeat 0 "+-h*i+"px";
+                }else if(j==3){    //right
+
+                    panel.style.cssText="width:"+width+"px;height:"+h+"px;position:absolute;top:0;left:0;transform-origin:right;transform:rotateY(-90deg)";
+                    panel.className="panel3";
+                    panel.style.background="url(img/img4.jpg) no-repeat 0 "+-h*i+"px";
+                }else if(j==4){    //end
+
+                    panel.style.cssText="width:"+width+"px;height:"+h+"px;position:absolute;top:0;left:0;transform:translate3d(0,0,"+-width+"px)";
+                    panel.className="panel4";
+                    panel.style.background="url(img/img3.jpg) no-repeat 0 "+-h*i+"px";
+                }else if(j==5){  //font
+
+                    panel.style.cssText="width:"+width+"px;height:"+h+"px;position:absolute;top:0;left:0;";
+                    panel.className="panel5";
+                    panel.style.background="url(img/img2.jpg) no-repeat 0 "+-h*i+"px";
+                }else if(j==6){    //bottom
+                    panel.style.cssText="width:"+width+"px;height:"+width+"px;position:absolute;top:0;left:0;transform-origin:top;transform:rotateX(-90deg)  translate3d(0,0,"+(h-1)+"px);";
+                    panel.className="panel1";
+                    panel.style.background="#000";
+                }
+                box.appendChild(panel);
+            }
+            arr.push(box);
+            scene.appendChild(box);
+            boxs.appendChild(scene);
+        }
+
+            //旋转
+//        var du=0;
+//        var t = setInterval(move,3000);
+//        function move(){
+//            du+=90;
+//            for(var i=0;i<arr.length;i++){
+//                arr[i].style.transform = "rotateY("+du+"deg)";
+//            }
+//        }
+//
+//        var left = document.querySelector(".left");
+//        var right = document.querySelector(".right");
+//        var falg = true;
+//        left.onclick=function(){
+//            clearInterval(t);
+//            console.log(falg);
+//            if(falg){
+//                falg = false;
+//            }else{
+//                return false;
+//            }
+//            du+=90;
+//            for(var i=0;i<arr.length;i++){
+//                arr[i].style.transform = "rotateY("+du+"deg)";
+//                arr[i].addEventListener("webkitTransitionEnd",function(){
+//                    falg = true;
+//                })
+//            }
+//
+//        };
+//        right.onclick=function(){
+//            clearInterval(t);
+//            console.log(falg);
+//            if(falg){
+//                falg = false;
+//            }else{
+//                return false;
+//            }
+//            du-=90;
+//            for(var i=0;i<arr.length;i++){
+//                arr[i].style.transform = "rotateY("+du+"deg)";
+//                arr[i].addEventListener("webkitTransitionEnd",function(){
+//                    falg = true;
+//                })
+//            }
+//
+//        };
+//
+//
+//        window.onfocus=function(){
+//            t = setInterval(move,3000);
+//        };
+//        window.onblur = function(){
+//            clearInterval(t);
+//        }
+    }
+
+</script>
+<body>
+<div class="boxs">
+<div class="left">&lt;</div>
+<div class="right">&gt;</div>
+</div>
+</body>
+</html>

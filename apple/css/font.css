@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'iconfont';  /* project id："182366" */
+    src: url('../font/iconfont.eot');
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'),
+    url('../font/iconfont.woff') format('woff'),
+    url('../font/iconfont.ttf') format('truetype'),
+    url('../font/iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:iconfont;
+}
+.apple:before{
+    content:"\e639";
+    color:#fff;
+    font-size: 20px;
+}
+.gwc:before{
+     content:"\e64b";
+    color:#fff;
+    font-size: 20px;
+ }
+.fdj:before{
+    content:"\e629";
+    color:#fff;
+    font-size: 20px;
+}
